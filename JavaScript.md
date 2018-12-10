@@ -120,7 +120,7 @@ getElementsByTagName()
 querySelectorAll() : use a CSS selector and return ALL matching element  Example: querySelector('css selector')
 
 * Traversing bet elements node
-parentNode 
+parentNode
 previousSibling / nextSibling
 firstChild / lastChild
 
@@ -245,4 +245,31 @@ $.ajax({
     }
 
 });
+
+```
+
+## Map function
+var array = [1,2,3];
+array.Map => function map() {[native code]}
+array.map(function(number)) { return number * 2};
+result => [2, 4, 6]
+array.map(function(number) { return '<div>' + number '</div>'});
+result => ["<div>1</div>", "<div>2</div>", "<div>3</div>"]
+
+
+## Property
+Object.defineProperty
+.hasOwnProperty('xxx')
+
+
+## Prototype
+### Function Prototype
+* Prototype is an object, not a class
+    Object instance, become prototype for all objects created using constrcutor 
+### Object Prototype
+* Object does not prototype property
+* Object prototype : object intance which the object is inherited
+```
+var fluffy = new Cat('Fluffy', 'White')
+display(fluffy.__proto__)
 ```

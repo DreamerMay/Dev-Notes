@@ -119,4 +119,24 @@ this.setState => this is to inform react the state is changing; we only update o
 `Value of the input : { this.state.term }` : located in render return. return the updated input.
 
 ### Control Field
-<input velue={this.state.term}> control element
+<input value={this.state.term}> control element
+
+
+ES6
+videos: videos === video
+
+<VideoList videos={this.state.videos} />
+VideoList getting data from parent part SearchBar by passing with this.state.videos as props
+
+{video} ==== const video = props.video;
+
+### Interpolation ES6
+
+url = 'https://www.youtube.com/embeded/' + videoId;
+
+TO
+
+url = `https://www.youtube.com/embeded/${videoId}`
+
+Throttle
+npm install --save lodash
