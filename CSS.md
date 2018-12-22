@@ -227,3 +227,5 @@ For example, you can use flex-flow: row wrap to set rows and wrap them
 - relative => only effect on the specific item but not anything around it. Relative will have a origin reference point. Relative will find its place based on the html arrangement.
 - absolute => disrupt entire environment. It will also reference to it's parents if they are in a div.
 - fixed => fix the position as the body element.
+
+
