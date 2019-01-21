@@ -273,3 +273,118 @@ Object.defineProperty
 var fluffy = new Cat('Fluffy', 'White')
 display(fluffy.__proto__)
 ```
+
+## Arrays
+* `.some()` => if any of the array include 
+* `.every()` => every items in the array include
+* `.find()` => something like filter but show you the first item it finds
+* `.findIndex()` => find index of the array
+* `.slice(3)` => keep items in an array from index number 3 onwards
+* `.slice(2, 4)` => keep items in an array from index 2 to index 3. Index 4 is
+  removed.
+
+*`.splice(1, 0, 'Feb')` => inserts at 1st index position, 1 start index of
+array, replace element 0 (in this case nothing to replace), add in 'Feb' to that
+position
+* `.splice(4, 1, 'May')` => replace 1 element at 4th index.
+
+Eg:
+```
+    const comment = comments.find( function(comment) {
+      if (comment.id === 823423) {
+        return true;
+      }
+    });
+OR
+    const comment1 = comments.find(comment => comment.id === 823423)
+
+    const index = comments.findIndex( comment => comment.id === 823423)
+    const remove = comments.splice(index, 1)
+```
+
+* `Math.abs(x)` => convert number into abolute number ( -ve to positive)
+* `.toString()` => convert numbers to string 
+* `Number('test')` => convert string to number
+* `split('test')` => convert data into array and slipt by empty '' = [t,e,s,t]
+* `str.split('')`
+* `str.join('')`
+* `str.reverse()`
+* `array.sort()`
+* `charAt(3)` => charactor index of the string 
+* `Math.abs(value)`
+* `sum.map(Number)` = map is interate what's inside sum and put a function in
+  the ()
+* `reduce(function(a,b) {return a + b}, 0)`
+* `arry.slice(2, 4)` => slice and array, start with index 2 and cut of index
+  incliding 4
+
+### Object
+
+Create new Object
+`const newObject = new Object();`
+
+```
+const favouriteCar = {
+  manufacturer: "Jaguar",
+  year: 1963,
+  model: "E-Type"
+}
+
+// Dot notation access to object properties
+favouriteCar.year
+
+// Square bracket notation access to object properties
+favouriteCar["year"]
+```
+
+
+```
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+for (let prop in obj) {
+  console.log( "o." + prop + " = " + obj[prop] );
+}
+```
+return prop = a, b, c; obj[prop] = 1, 2, 3
+
+
+### add object into an array
+
+  accounts: [
+    { sherine: 8000 }
+  ],
+  addAcct: (name, balance) => {
+    temp = {};
+    temp[name] = balance;
+    bank.accounts.push(temp);
+    return bank.accounts;
+  },
+
+`forEach()` => method loop through the array and applies the same function to
+every tems in it
+```
+var result = [];
+people.forEach(function(person) {
+    if (person.rate >= 65 && person.rate <= 90 ) {
+      result.push(person)
+    }
+  // Loop through results array & add people to results table
+})
+```
+`filter()` => method applies the same fucntion to each itme in the array, but
+that function return only ture or flase. If return tru, the filter() method adds
+that item to a new array
+```
+function priceRange(person) {
+  return (person.rate >= 65) && (person.rate <= 90);
+}
+var result = [];
+results = people.filter(priceRange) // filter calls priceRange()
+// Loop through results array & add matching people to results table
+```
+
+`trim()` => remove white space

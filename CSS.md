@@ -1,5 +1,8 @@
 # CSS
 
+## Default CSS to work with
+* semantic-ui (open source)
+
 ### Block Element : <h1>-<h6>, <p> , <div>
 ### Inline Element : <img>, <em>, <span>
 
@@ -229,3 +232,20 @@ For example, you can use flex-flow: row wrap to set rows and wrap them
 - fixed => fix the position as the body element.
 
 
+## Select child
+`.panel > *:first-child { transform: translateY(-100%); }`
+`.panel p:nth-child(2) {`
+
+## Transition:
+`
+    transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+`
+
+## label 
+`<label for="email"></label>` => when select the label, it will automatically
+select the text input
+The selector would be label[for=email], so in CSS:
+label[for=email]

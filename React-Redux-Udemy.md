@@ -122,7 +122,7 @@ this.setState => this is to inform react the state is changing; we only update o
 <input value={this.state.term}> control element
 
 
-ES6
+## ES6
 videos: videos === video
 
 <VideoList videos={this.state.videos} />
@@ -140,3 +140,20 @@ url = `https://www.youtube.com/embeded/${videoId}`
 
 Throttle
 npm install --save lodash
+
+## Three Tenets of Components
+* Component Nesting
+* Component Reusability
+* Component Configuration
+
+use {} when use javascript variables.
+
+## Component Hierarchy
+App -> is the parent component
+CommentDetail -> is the child/children component
+
+### Props
+* system for passing data from a parent component to a child component
+* Goal is to customize or configure a child/nested component
+
+
