@@ -235,6 +235,14 @@ console.log(square(4, true, "hedgehog"));
 * Properties that contain functions are called `methods` of the value they
   belong to, as in “toUpperCase is a method of a string”.
 
+## Array
+* items in an arary are called `elements`;
+* `items[1] =  "iceland";` => adding or changing elements based on index 1; can
+* `items[items.length]` => add new elements to last item
+* push, pop, and join functions available as properties on every array.
+*
+
+
 ### Objects
 * Name of the properties => keys
 
@@ -259,11 +267,63 @@ console.log(objectA);
 * if property name and value name are the same, we do not have to delare
   `events: events`. just `events`
 
-* `for of loop`
-for (let entry of JOURNAL) {
-  console.log(`${entry.events.length} events.`);
+* `for of loop` => get the value of the array, and only store anything that is
+  unique by using obj[i] = true; `for (let i of a) {obj[i] = true;}`
+* `for in loop` => get the index of the array
+* Example in Array usage; it gets the index of the array 
+let list = [4, 5, 6];
+
+for (let i in list) { // it gets the index of the array 
+   console.log(i); // "0", "1", "2",
 }
-* Add and remove at the end of an array `.push(x)` add into last item; `.pop()` remove the last item and return it;
+
+for (let i of list) {
+   console.log(i); // "4", "5", "6"
+}
+
+* Example in Object usaage, it gets the Object.keys
+const obj = {  
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4
+}
+
+for (let elem in obj) { //  it gets the Object.keys
+  console.log(`${elem} = ${obj[elem]}`);
+}
+// a = 1
+// b = 2
+// c = 3
+// d = 4
+
+* `sort()` => `arr.sort([compareFunction])`
+* is no function with compare define, it will sort based on first number. Needs
+  to define compare function
+
+arr = A.sort( (a,b) => a-b ); // accending
+
+var numberArray = [40, 1, 5, 200];
+
+numberArray.sort(function(a, b) {
+  return a - b;
+})
+console.log('numberArray:', numericStringArray.join());
+console.log('Sorted without a compare function:', numericStringArray.sort());
+console.log('Sorted with compareNumbers:', numericStringArray.sort(compareNumbers));
+//Sorted without a compare function: (4) [1, 200, 40, 5]
+//Sorted with compareNumbers: (4) [1, 5, 40, 200]
+
+* ` new .Set()` = store only unique operators, no duplication. (remove duplicates)
+let a = [1,2,3,5,2,1,8]
+[... new Set(a)];
+// return [1,2,3,5,8]
+
+or let bSet = new Set(a); no in array form
+
+
+* Add and remove at the end of an array `.push(x)` add into last item; `.pop()`
+  remove the last item and return it; `.push(x, y)`
 * Add and remove at the begining of an array `unshift(x)` `shift()`
 * `indexOf(2)` = search from begining of value 2 in the array; `lastIndexOf(2)`
   => searh from end of array for value 2; return `-1` when item can't be found
@@ -275,21 +335,99 @@ console.log("coconut".indexOf("u"));
 // → 5
 console.log("one two three".indexOf("ee"));
 // → 11
-* `slice()` take start and end indices and return array between them. exn index
+* `slice(2,4)` take start and end indices and return array between them. last index
   is excluded. 
-console.log([0, 1, 2, 3, 4].slice(2, 4));
-// → [2, 3]
-console.log([0, 1, 2, 3, 4].slice(2));
-// → [2, 3, 4]
+* arr.slice([begin[, end]])
+* Does not change original array
+var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+console.log(animals.slice(2));
+// expected output: Array ["camel", "duck", "elephant"]
+
+console.log(animals.slice(2, 4));
+// expected output: Array ["camel", "duck"]
+
+console.log(animals.slice(1, 5));
+// expected output: Array ["bison", "camel", "duck", "elephant"]
 console.log("coconuts".slice(4, 7));
 // → nut
 * `slice()` with empty argument, it just clonning the array;
+var str = 'The quick brown fox jumps over the lazy dog.';
+console.log(str.slice(31));
+// expected output: "the lazy dog."
 
-* `splice(2)` keep the first 2 item in teh array
+console.log(str.slice(4, 19));
+// expected output: "quick brown fox"
+
+console.log(str.slice(-4));
+// expected output: "dog."
+
+console.log(str.slice(-9, -5));
+// expected output: "lazy"
+
+* `splice(2)` keep the first 2 item in the array OR remove after index 2;
+* The splice() method changes the contents of an array by removing or replacing
+  existing elements and/or adding new elements.
+* Change original array
+* `array.splice(1, 2, "replace", "replace2")` => 1 is start of index array, 2 => range from
+  start index, if 0 mean add in "replace" in from of 1; if  
 const rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo',
   'violet'];
 rainbow.splice(3);
 console.log(rainbow; // ['red', 'orange', 'yellow']
+
+
+var months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// inserts at 1st index position
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
+
+months.splice(4, 1, 'May');
+// replaces 1 element at 4th index
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+
+* `items.forEach(showInfo)` loop throught each item
+ player.items.forEach(function (item, i) {
+    itemsString += " " + (i + 1) + " " + item + spacer.newLine() ;
+  });
+
+var array1 = ['a', 'b', 'c'];
+array1.forEach(function(element, i) {
+  console.log(element, i);
+});
+
+// expected output: "a"
+// expected output: "b"
+// expected output: "c"
+
+[ 'a', 'b', 'c' ].forEach( function (elem, index) {
+    console.log(index + '. ' + elem);
+});
+// => 0. a
+// => 1. b
+// => 2. c
+
+* Word count
+var tweets = [
+  "Education is showing business the way by using technology to share
+  ➥ information. How do we do so safely?",
+  "Enjoy a free muffin & coffee with Post Plus, our new loyalty club
+  ➥ exclusive to subscribers!",
+  "We're LIVE on Periscope right now answering all your #pet questions
+  ➥ - tweet us yours now!"
+  ];
+var words = {};
+var tweetText = tweets.join(" ");
+var tweetWords = tweetText.split(" ");
+tweetWords.forEach(function (word) {
+                                    words[word] = 0;
+                                    });
+tweetWords.forEach(function (word) {
+                                    words[word] = words[word] + 1;
+                                    });
+console.log(words);
 
 * `concat()` - combine 2 arrays. if argument is empty, it clonning the array
 var array1 = ['a', 'b', 'c'];
@@ -313,7 +451,31 @@ num1[0].push(4);
 console.log(numbers);
 // results in [[1, 4], 2, [3]]
 
-* `findIndex()` it finds the first value for which the given fucntion return true
+* `findIndex()` it finds the first value for which the given fucntion return
+  true
+* string.indexOf(searchvalue, start)
+var str = "Hello world, welcome to the universe.";
+var n = str.indexOf("welcome"); // 13
+
+var str = "Hello world, welcome to the universe.";
+var n = str.indexOf("e"); // 1
+
+* `.fill()` - fills all the elements of an array from a start index to an end
+  index with a stati value. the end index is excluded. Do not change the length
+  of array.
+var array1 = [1, 2, 3, 4];
+
+// fill with 0 from position 2 until position 4
+console.log(array1.fill(0, 2, 4));
+// expected output: [1, 2, 0, 0]
+
+// fill with 5 from position 1
+console.log(array1.fill(5, 1));
+// expected output: [1, 5, 5, 5]
+
+console.log(array1.fill(6));
+// expected output: [6, 6, 6, 6]
+
 
 * `.concat()` glue arrays together to creat a new array
 function remove(array, index) {
@@ -351,6 +513,44 @@ console.log(string.length);
 console.log(string[1]);
 // → b
 
+* `.substr(3,12)` => 3 = from and inclusive; 12 = count from 3 onward 12 char
+* string.substr(start, length)
+var message = "We choose to go to the Moon!";
+console.log(message.substr(3, 12)); // "choose to go"
+
+* `toString()` = convert into string
+* `toString(2)` = convert to binary, 
+2 - The number will show as a binary value
+8 - The number will show as an octal value
+16 - The number will show as an hexadecimal value
+
+var num = 15;
+var a = num.toString(); // 15
+var b = num.toString(2); // 1111
+var c = num.toString(8); // 17
+var d = num.toString(16); // f
+
+`instanceof` operator return `true` or `false`
+
+`arr.includes()` 
+var array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+// expected output: true
+
+var pets = ['cat', 'dog', 'bat'];
+
+console.log(pets.includes('cat'));
+// expected output: true
+
+console.log(pets.includes('at'));
+// expected output: false
+
+[1, 2, 3].includes(2);     // true
+[1, 2, 3].includes(4);     // false
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+[1, 2, NaN].includes(NaN); // true
 * `.flat` => flatten and array.
 var arr1 = [1, 2, [3, 4]];
 arr1.flat(); 
@@ -363,6 +563,35 @@ arr2.flat();
 var arr3 = [1, 2, [3, 4, [5, 6]]];
 arr3.flat(2);
 // [1, 2, 3, 4, 5, 6]
+
+* `parseInt(string, radix)`
+* conver strings into integer
+* radix = 
+
+* check for interger `isInteger()`
+function fits(x, y) {
+  if (Number.isInteger(y / x)) {
+    return 'Fits!';
+  }
+  return 'Does NOT fit!';
+}
+
+* `a.reverse` - only on arrays. so if you string you have to split, reverse than
+  join.
+var array1 = ['one', 'two', 'three'];
+console.log('array1: ', array1);
+// expected output: Array ['one', 'two', 'three']
+
+var reversed = array1.reverse(); 
+console.log('reversed: ', reversed);
+// expected output: Array ['three', 'two', 'one']
+
+
+* Recursive
+if num is < 2 show 1, else show function
+const factorial = number => {
+  return number < 2 ? 1 : number * factorial(number - 1);
+}
 
 ### REST parameters
 * useful for a function to accept any numbers of arguments
@@ -382,11 +611,11 @@ console.log(["will", ...words, "understand"]);
 
 ### Math Object
 * Eg `Math.max` `Math.min` `Math.sqrt` Math.cos(), sin, tan, acos, asin, atan
-  (inverse), Math.PI
+  (inverse), Math.PI. `Math.max(2,3,4,5)`
 * Math.random() = randomw between zero (inclusive) and one (exclusive)
 * Math.floor(x) = round  down to nearest whole number ; `Math.floor (2.9)` => 2
-* Math.ceil = rounds up to a whole numberl `Math.ceil(2.04)` => 3
-* Math.round() =to the nearest whle number
+* Math.ceil = rounds up to a whole number `Math.ceil(2.04)` => 3
+* Math.round() =to the nearest whole number
 * Math.abs() takes the absolute value of a number. Change neg to positive.
 
 ## JSON (Javascript Object Notation)
@@ -431,7 +660,18 @@ repeat(3, n => {
 // → 0 is even
 // → 2 is even
 
-* Like `forEach(function)`, `filter(function)` and `map(function)` is standard array method
+* Like `forEach(function)`, `filter(function)` and `map(function)` is standard
+  array method
+
+* `arr.filter(function())`
+var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+const result = words.filter(word => word.length > 6);
+
+console.log(result);
+// expected output: Array ["exuberant", "destruction", "present"]
+
+
 * `reduce()` => build value by repeatedly taking a single element from the array
   and combining it with the current value.
   -paramataers to `reduce` => array, combining function, a start value
@@ -448,8 +688,21 @@ return current;
 console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
 // → 10
 
-* 
+* Find duplicate numbers in array
 
+let a = [ 1,2,4,6,1,3];
+let b = [];
+let len = a.length // for time efficiency
+a.sort(); // sort the array;
+let _temp;
+
+for (let i = 0; i < len; i++) {
+  if (a[i] === _temp) {
+    b.push(a[i]);
+    a[i] = _temp
+  }
+}
+console.log(b) // [1,1]
 * `some()` => takes a test function and teslls you wether that function return
   tru for any of the elements in the array.
 var array = [1, 2, 3, 4, 5];
@@ -576,6 +829,43 @@ killerRabbit.speak("SKREEEE!");
 
 ## Classes
 * class defineds the shape of a type of object
+* `constructor function` to create many similar objects. constructor create and
+  display looks like this:
+planet1 = new Planet("Jupiter", 8, "Gas Giant");
+planet1.show();
+
+var buildPlanet = function (name, position, type) {
+    var planet = {};
+
+    planet.name = name;
+    planet.position = position;
+    planet.type = type;
+
+    planet.showPlanet = function () {
+        var info = planet.name;
+        info += ": planet " + planet.position;
+        info += " - " + planet.type;
+        console.log(info);
+    };
+    return planet;
+};
+
+* change to use `this`
+var Planet = function (name, position, type) {
+  this.name = name;
+  this.position = position;
+  this.type = type;
+  this.showPlanet = function () {
+  var info = this.name + ": planet " + this.position;
+  info += " - " + this.type;
+  console.log(info);
+
+var planets = [
+    buildPlanet( "Jupiter", 5, "Gas Giant" ),
+    buildPlanet( "Neptune", 8, "Ice Giant" ),
+    buildPlanet( "Venus", 2, "Terrestrial" )
+];
+
 * `constructor` - `new` in front of a function call, the function is treated as
   a constrcutor. => an object with the right prototype is automatically created,
   bond to `this` in the function, and returned at the end of the function.
@@ -687,3 +977,15 @@ console.log(ages.has("toString"));
 ## Iterator Interface
 * `Symbol.iterator`
 * `.next()`,`done:`, `value:` 
+
+
+
+# SHORT HAND
+
+* compare item which is not in an specific array
+if (!sequence[A[i]]) {
+        counter++;
+    }
+
+* put element in the same as the index position
+array[A[i]] = A[i]
